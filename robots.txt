@@ -1,0 +1,19 @@
+# robots.txt — BooterLabs
+# https://booterlabs.42web.io/
+
+User-agent: *
+Allow: /
+
+# Block access to sensitive / non-public paths
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /node_modules/
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+# Crawl-delay for well-behaved bots
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://booterlabs.42web.io/sitemap.xml
