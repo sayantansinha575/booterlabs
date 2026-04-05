@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BooterLabs — Software Development Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --primary:#202124;
+  --primary-light:#F1F3F4;
+  --primary-dark:#000000;
+  --accent-blue:#4285F4;
+  --accent-red:#EA4335;
+  --accent-yellow:#FBBC05;
+  --accent-green:#34A853;
+  --green:#34A853;
+  --purple:#AB47BC;
+  --cyan:#00ACC1;
+  --yellow:#FBBC05;
+  --text:#202124;
+  --text2:#3C4043;
+  --muted:#5F6368;
+  --border:#DADCE0;
+  --bg:#FFFFFF;
+  --bg2:#F8F9FA;
+  --bg3:#F1F3F4;
+  --radius:12px;
+  --shadow:0 1px 3px rgba(60,64,67,.1),0 4px 16px rgba(60,64,67,.06);
+  --shadow-lg:0 8px 32px rgba(60,64,67,.15),0 2px 8px rgba(60,64,67,.08);
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);background:#fff;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1200px;margin:0 auto;}
+.logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);}
+.logo span{color:#4285F4;}
+.nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--muted);}
+.nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;gap:10px;align-items:center;}
+
+/* ── SERVICES DROPDOWN ── */
+.nav-item{position:relative;}
+.nav-item>a{display:flex;align-items:center;gap:4px;}
+.nav-item>a .nav-caret{font-size:10px;}
+.nav-item:hover>a .nav-caret{transform:rotate(180deg);}
+.nav-item::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:16px;}
+.svc-dropdown{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);padding:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:900px;opacity:0;visibility:hidden;z-index:200;}
+.nav-item:hover .svc-dropdown{opacity:1;visibility:visible;}
+.svc-dropdown::before{content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid var(--border);}
+.svc-dropdown::after{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #fff;}
+.dd-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:10px;color:var(--text2);transition:background .1s;}
+.dd-item:hover{background:var(--bg3);}
+.dd-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:1px;}
+.dd-text h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3;}
+.dd-text p{font-size:12px;color:var(--muted);line-height:1.5;margin:0;}
+.btn-outline{border:1px solid var(--border);color:var(--text2);padding:8px 20px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;background:var(--bg3);}
+.btn-outline:hover{background:var(--border);border-color:#BDC1C6;}
+.btn-filled{background:#202124;color:#fff;padding:9px 22px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:all .2s;}
+.btn-filled:hover{background:#3C4043;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.25);}
+
+/* ── HERO ── */
+.hero{background:rgba(255,255,255,.55);padding:80px 5% 90px;overflow:hidden;position:relative;z-index:1;}
+#confetti-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:0;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:5px 14px 5px 8px;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:20px;}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:#34A853;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,54px);font-weight:800;line-height:1.1;letter-spacing:-2px;margin-bottom:18px;color:var(--text);}
+.hero h1 .hl{background:linear-gradient(90deg,#4285F4,#EA4335,#FBBC05,#34A853);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:32px;max-width:480px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.hero-trust{display:flex;align-items:center;gap:12px;margin-top:32px;font-size:13px;color:var(--muted);}
+.trust-avatars{display:flex;}
+.trust-avatars span{width:32px;height:32px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-left:-8px;}
+.ta1{background:#E8F0FE;color:#1A73E8;}
+.ta2{background:#FCE8E6;color:#C5221F;}
+.ta3{background:#E6F4EA;color:#137333;}
+.ta4{background:#FEF7E0;color:#E37400;}
+.hero-visual{position:relative;}
+.hero-card-main{background:#fff;border-radius:16px;padding:28px;box-shadow:var(--shadow-lg);border:1px solid var(--border);}
+.hero-card-main .card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.project-icon{width:44px;height:44px;background:var(--bg3);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:20px;}
+.card-title{font-weight:700;font-size:15px;color:var(--text);}
+.card-sub{font-size:12px;color:var(--muted);}
+.progress-row{margin-bottom:12px;}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px;}
+.progress-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:3px;}
+.pf1{width:92%;background:linear-gradient(90deg,#4285F4,#34A853);}
+.pf2{width:78%;background:linear-gradient(90deg,#EA4335,#FBBC05);}
+.pf3{width:85%;background:linear-gradient(90deg,#AB47BC,#4285F4);}
+.float-badge{position:absolute;background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 4px 20px rgba(60,64,67,.15);border:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;}
+.fb1{top:-20px;right:30px;}
+.fb2{bottom:20px;left:-20px;}
+.fb-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.fb-icon1{background:#E6F4EA;color:#137333;}
+.fb-icon2{background:#E8F0FE;color:#1A73E8;}
+
+/* ── STATS BAR ── */
+.stats-bar{background:#202124;padding:28px 5%;position:relative;z-index:1;}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;gap:20px;}
+.stat-item{border-right:1px solid rgba(255,255,255,.2);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#fff;}
+.stat-label{font-size:13px;color:rgba(255,255,255,.75);margin-top:2px;}
+
+/* ── SECTION COMMONS ── */
+.section{padding:80px 5%;position:relative;z-index:1;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-block;background:var(--bg3);color:var(--text2);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:12px;border:1px solid var(--border);}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-1px;margin-bottom:10px;color:var(--text);}
+.section-sub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.7;}
+.section-head{margin-bottom:48px;}
+.section-head.center{text-align:center;}
+.section-head.center .section-sub{margin:0 auto;}
+
+/* ── WHAT SETS US APART ── */
+.apart{background:rgba(248,249,250,.72);}
+.apart-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.apart-card{background:#fff;border-radius:var(--radius);padding:24px;border:1px solid var(--border);transition:all .25s;cursor:default;}
+.apart-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#BDC1C6;}
+.apart-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;}
+.ai1{background:#E8F0FE;color:#1A73E8;}
+.ai2{background:#E6F4EA;color:#137333;}
+.ai3{background:#FCE8E6;color:#C5221F;}
+.ai4{background:#FEF7E0;color:#E37400;}
+.ai5{background:#F3E8FD;color:#7B1FA2;}
+.ai6{background:#E0F7FA;color:#00838F;}
+.apart-card h4{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--text);}
+.apart-card p{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* ── SERVICES ── */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.svc-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .25s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--svc-color,var(--text));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.svc-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
+.svc-card h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--text);}
+.svc-card p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
+.svc-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.svc-tag{font-size:11px;color:var(--text2);background:var(--bg3);padding:3px 10px;border-radius:100px;font-weight:600;border:1px solid var(--border);}
+
+/* ── HOW WE WORK ── */
+.how{background:rgba(248,249,250,.72);}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.how-grid::before{content:'';position:absolute;top:40px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,#4285F4,#EA4335,#FBBC05,#34A853);border-radius:1px;z-index:0;}
+.how-step{padding:0 16px;text-align:center;position:relative;z-index:1;}
+.step-circle{width:80px;height:80px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;box-shadow:var(--shadow);transition:all .3s;}
+.how-step:hover .step-circle{border-color:#BDC1C6;box-shadow:var(--shadow-lg);transform:scale(1.08);}
+.step-num-badge{position:absolute;top:-6px;right:-6px;width:22px;height:22px;background:#202124;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.how-step h4{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.how-step p{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.proj-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .25s;}
+.proj-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.proj-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px;position:relative;}
+.pt1{background:linear-gradient(135deg,#4285F4 0%,#34A853 100%);}
+.pt2{background:linear-gradient(135deg,#EA4335 0%,#FBBC05 100%);}
+.pt3{background:linear-gradient(135deg,#34A853 0%,#00ACC1 100%);}
+.pt4{background:linear-gradient(135deg,#FBBC05 0%,#EA4335 100%);}
+.proj-thumb-text{color:rgba(255,255,255,.95);}
+.proj-thumb-sub{color:rgba(255,255,255,.6);font-size:12px;font-weight:400;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:1px;text-transform:uppercase;}
+.proj-body{padding:22px;}
+.proj-industry{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.proj-title{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.tech-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.tech-tag{font-size:11px;color:var(--text2);background:var(--bg3);padding:3px 10px;border-radius:100px;font-weight:500;border:1px solid var(--border);}
+.proj-result{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:6px;font-size:12px;color:#34A853;font-weight:600;}
+
+/* ── TESTIMONIALS ── */
+.testi-section{background:rgba(248,249,250,.72);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi-card{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--border);transition:all .25s;}
+.testi-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.stars{display:flex;gap:3px;margin-bottom:14px;color:#FBBC05;font-size:14px;}
+.testi-text{font-size:14px;color:var(--text2);line-height:1.75;font-style:italic;margin-bottom:20px;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+.av1{background:#E8F0FE;color:#1A73E8;}
+.av2{background:#E6F4EA;color:#137333;}
+.av3{background:#FCE8E6;color:#C5221F;}
+.av4{background:#FEF7E0;color:#E37400;}
+.av5{background:#F3E8FD;color:#7B1FA2;}
+.av6{background:#E0F7FA;color:#00838F;}
+.testi-name{font-weight:700;font-size:14px;color:var(--text);}
+.testi-role{font-size:12px;color:var(--muted);}
+.testi-platform{margin-left:auto;font-size:10px;font-weight:600;color:var(--muted);background:var(--bg3);padding:3px 10px;border-radius:100px;border:1px solid var(--border);}
+
+/* ── TECHNOLOGIES ── */
+.tech-section{background:rgba(255,255,255,.55);}
+.tech-logos{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
+.tech-logo{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;transition:all .2s;cursor:default;}
+.tech-logo:hover{border-color:#BDC1C6;background:#fff;box-shadow:var(--shadow);}
+.tech-logo-icon{font-size:28px;}
+.tech-logo-name{font-size:11px;font-weight:600;color:var(--muted);}
+
+/* ── FAQ ── */
+.faq-section{background:rgba(248,249,250,.72);}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.faq-q{padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;user-select:none;transition:background .2s;color:var(--text);}
+.faq-q:hover{background:var(--bg2);}
+.faq-q .icon{width:28px;height:28px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text2);transition:transform .3s;flex-shrink:0;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;}
+.faq-a-inner{padding:0 20px 18px;font-size:14px;color:var(--muted);line-height:1.7;}
+.faq-item.open .faq-a{max-height:200px;}
+.faq-item.open .faq-q .icon{transform:rotate(45deg);background:var(--bg3);}
+
+/* ── CTA BAND ── */
+.cta-band{background:#202124;padding:70px 5%;text-align:center;position:relative;z-index:1;}
+.cta-band h2{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,40px);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:12px;}
+.cta-band p{color:rgba(255,255,255,.7);font-size:16px;margin-bottom:32px;}
+.cta-band-btns{display:flex;gap:12px;justify-content:center;}
+.btn-white{background:#fff;color:#202124;padding:13px 28px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.3);color:#fff;padding:12px 28px;border-radius:100px;font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5);}
+
+/* ── FOOTER ── */
+footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z-index:1;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.footer-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:12px;}
+.footer-logo span{color:#4285F4;}
+.footer-desc{font-size:13px;line-height:1.7;margin-bottom:20px;}
+.footer-socials{display:flex;gap:10px;}
+.social-btn{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:14px;color:#9AA0A6;transition:all .2s;}
+.social-btn:hover{background:rgba(255,255,255,.15);color:#fff;}
+.footer-col h5{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;margin-bottom:16px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul li a{font-size:13px;color:#9AA0A6;transition:color .2s;}
+.footer-col ul li a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#5F6368;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.hero-inner>*{animation:fadeInUp .7s ease both;}
+.hero-inner>*:nth-child(2){animation-delay:.15s;}
+.float-badge{animation:fadeInUp .6s ease both;}
+.fb1{animation-delay:.4s;}
+.fb2{animation-delay:.55s;}
+
+/* ── RESPONSIVE HINTS ── */
+@media(max-width:900px){
+  .hero-inner,.services-grid,.proj-grid,.how-grid,.testi-grid,.tech-logos{grid-template-columns:repeat(2,1fr);}
+  .apart-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .how-grid::before{display:none;}
+}
+@media(max-width:600px){
+  .hero-inner,.services-grid,.proj-grid,.how-grid,.testi-grid,.tech-logos,.apart-grid,.stats-inner{grid-template-columns:1fr;}
+  nav .nav-links{display:none;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">booter<span>Labs</span></div>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a href="#services">Services <i class="fa fa-chevron-down nav-caret"></i></a>
+        <div class="svc-dropdown">
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#E8F0FE;color:#1A73E8;"><i class="fa fa-globe"></i></div>
+            <div class="dd-text">
+              <h4>Web Development</h4>
+              <p>High-performance websites and SaaS platforms built for scale, speed, and seamless user experience.</p>
+            </div>
+          </a>
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#FCE8E6;color:#C5221F;"><i class="fa fa-mobile-alt"></i></div>
+            <div class="dd-text">
+              <h4>Mobile App Development</h4>
+              <p>Cross-platform iOS &amp; Android apps with native feel, shipped fast from a single codebase.</p>
+            </div>
+          </a>
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#E6F4EA;color:#137333;"><i class="fa fa-server"></i></div>
+            <div class="dd-text">
+              <h4>Backend &amp; APIs</h4>
+              <p>Robust REST and GraphQL APIs, microservices, and cloud infrastructure built to handle real-world load.</p>
+            </div>
+          </a>
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#FEF7E0;color:#E37400;"><i class="fa fa-paint-brush"></i></div>
+            <div class="dd-text">
+              <h4>UI/UX Design</h4>
+              <p>Research-driven design with wireframes, prototypes, and pixel-perfect design systems tailored to your brand.</p>
+            </div>
+          </a>
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#F3E8FD;color:#7B1FA2;"><i class="fa fa-brain"></i></div>
+            <div class="dd-text">
+              <h4>AI &amp; ML Integration</h4>
+              <p>Embed intelligent features — LLM-powered chatbots, recommendation engines, and custom ML models in production.</p>
+            </div>
+          </a>
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#FEE2E2;color:#B91C1C;"><i class="fa fa-cloud"></i></div>
+            <div class="dd-text">
+              <h4>DevOps &amp; Cloud</h4>
+              <p>CI/CD pipelines, Kubernetes clusters, monitoring and alerting — bulletproof infrastructure at any scale.</p>
+            </div>
+          </a>
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#E8F5E9;color:#2E7D32;"><i class="fa fa-search"></i></div>
+            <div class="dd-text">
+              <h4>SEO &amp; Growth</h4>
+              <p>Technical SEO audits, on-page optimization, and content strategy that drives organic traffic and ranks you higher.</p>
+            </div>
+          </a>
+          <a class="dd-item" href="#services">
+            <div class="dd-icon" style="background:#E3F2FD;color:#1565C0;"><i class="fa fa-cubes"></i></div>
+            <div class="dd-text">
+              <h4>SaaS Development</h4>
+              <p>End-to-end SaaS product development — multi-tenancy, billing integration, auth, dashboards, and scalable architecture.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="#work">Our Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <!-- <div class="btn-outline">View Portfolio</div>
+      <div class="btn-filled">Get Free Quote</div> -->
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><div class="badge-dot"></div> Trusted by 40+ companies worldwide</div>
+      <h1>We Build <span class="hl">Software</span><br/>That Scales.</h1>
+      <p>Full-stack development, mobile apps, AI integrations, and cloud infrastructure. We turn your ideas into production-ready digital products — fast.</p>
+      <div class="hero-btns">
+        <div class="btn-filled" style="padding:13px 28px;font-size:14px;">Start Your Project <i class="fa fa-arrow-right" style="margin-left:6px;font-size:12px;"></i></div>
+        <div class="btn-outline" style="padding:12px 24px;font-size:14px;">See Our Work</div>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avatars">
+          <span class="ta1">AK</span><span class="ta2">SR</span><span class="ta3">MT</span><span class="ta4">JL</span>
+        </div>
+        <span>Trusted by <strong>40+ founders</strong> and enterprises</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="float-badge fb1">
+        <div class="fb-icon fb-icon1"><i class="fa fa-check"></i></div>
+        <div><div style="font-size:12px;font-weight:700;color:#111;">Project Delivered</div><div style="font-size:11px;color:#6B7280;">On time & on budget</div></div>
+      </div>
+      <div class="hero-card-main">
+        <div class="card-header">
+          <div class="project-icon"><i class="fa fa-code"></i></div>
+          <div><div class="card-title">FinTech Dashboard v3.2</div><div class="card-sub">Active Development</div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Frontend UI</span><span>92%</span></div>
+          <div class="progress-bar"><div class="progress-fill pf1"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>REST API</span><span>78%</span></div>
+          <div class="progress-bar"><div class="progress-fill pf2"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Database Schema</span><span>85%</span></div>
+          <div class="progress-bar"><div class="progress-fill pf3"></div></div>
+        </div>
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid #F3F4F6;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:12px;color:#6B7280;">Team: 4 engineers</div>
+          <div style="font-size:12px;font-weight:700;color:#34A853;"><i class="fa fa-circle" style="font-size:8px;margin-right:4px;"></i>On Track</div>
+        </div>
+      </div>
+      <div class="float-badge fb2">
+        <div class="fb-icon" style="background:#EDE9FE;color:#6D28D9;"><i class="fa fa-star"></i></div>
+        <div><div style="font-size:12px;font-weight:700;color:#111;">Client Rating</div><div style="font-size:11px;color:#6B7280;">4.9 / 5.0 average</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">60+</div><div class="stat-label">Projects Delivered</div></div>
+    <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Happy Clients</div></div>
+    <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Client Retention</div></div>
+    <div class="stat-item"><div class="stat-num">5 Yrs</div><div class="stat-label">Industry Experience</div></div>
+  </div>
+</div>
+
+<!-- ── WHAT SETS US APART ── -->
+<section class="section apart">
+  <div class="section-inner">
+    <div class="section-head center">
+      <div class="section-tag">Why Choose Us</div>
+      <div class="section-title">What Sets BooterLabs Apart</div>
+      <div class="section-sub">We don't just write code — we deliver complete software solutions that align with your business goals.</div>
+    </div>
+    <div class="apart-grid">
+      <div class="apart-card">
+        <div class="apart-icon ai1"><i class="fa fa-bullseye"></i></div>
+        <h4>Tailored Solutions</h4>
+        <p>Every product is built specifically for your use case. No templates, no shortcuts — fully custom from day one.</p>
+      </div>
+      <div class="apart-card">
+        <div class="apart-icon ai2"><i class="fa fa-dollar-sign"></i></div>
+        <h4>Competitive Pricing</h4>
+        <p>Premium quality at transparent, predictable rates. No hidden fees, no surprise invoices.</p>
+      </div>
+      <div class="apart-card">
+        <div class="apart-icon ai3"><i class="fa fa-clock"></i></div>
+        <h4>On-Time Delivery</h4>
+        <p>We take deadlines seriously. Sprint-based delivery means you always know where your project stands.</p>
+      </div>
+      <div class="apart-card">
+        <div class="apart-icon ai4"><i class="fa fa-headset"></i></div>
+        <h4>Post-Launch Support</h4>
+        <p>60-day free support after launch. We stay with you beyond go-live to ensure everything runs smoothly.</p>
+      </div>
+      <div class="apart-card">
+        <div class="apart-icon ai5"><i class="fa fa-user-check"></i></div>
+        <h4>User-Centric Design</h4>
+        <p>Every interface is designed around your end-users — intuitive, accessible, and delightful to use.</p>
+      </div>
+      <div class="apart-card">
+        <div class="apart-icon ai6"><i class="fa fa-sync-alt"></i></div>
+        <h4>Agile Workflow</h4>
+        <p>Weekly demos and iterative development. You stay involved and in control throughout the project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Services</div>
+      <div class="section-title">Everything You Need to Build &amp; Grow</div>
+      <div class="section-sub">From concept to deployment — we cover the full software development lifecycle.</div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card" style="--svc-color:#4285F4;">
+        <div class="svc-icon-wrap" style="background:#E8F0FE;color:#1A73E8;"><i class="fa fa-globe"></i></div>
+        <h3>Web Development</h3>
+        <p>High-performance websites and web applications. From marketing sites to complex SaaS platforms, we build for scale and speed.</p>
+        <div class="svc-tags"><span class="svc-tag">React</span><span class="svc-tag">Next.js</span><span class="svc-tag">Node.js</span></div>
+      </div>
+      <div class="svc-card" style="--svc-color:#EA4335;">
+        <div class="svc-icon-wrap" style="background:#FCE8E6;color:#C5221F;"><i class="fa fa-mobile-alt"></i></div>
+        <h3>Mobile App Development</h3>
+        <p>Cross-platform iOS and Android apps that feel native. Beautiful UX with a single codebase, shipped fast.</p>
+        <div class="svc-tags"><span class="svc-tag">React Native</span><span class="svc-tag">Flutter</span><span class="svc-tag">Swift</span></div>
+      </div>
+      <div class="svc-card" style="--svc-color:#34A853;">
+        <div class="svc-icon-wrap" style="background:#E6F4EA;color:#137333;"><i class="fa fa-server"></i></div>
+        <h3>Backend &amp; APIs</h3>
+        <p>Robust REST and GraphQL APIs, microservices, database architecture, and cloud infrastructure that doesn't break under load.</p>
+        <div class="svc-tags"><span class="svc-tag">AWS</span><span class="svc-tag">PostgreSQL</span><span class="svc-tag">Docker</span></div>
+      </div>
+      <div class="svc-card" style="--svc-color:#FBBC05;">
+        <div class="svc-icon-wrap" style="background:#FEF7E0;color:#E37400;"><i class="fa fa-paint-brush"></i></div>
+        <h3>UI/UX Design</h3>
+        <p>Research-driven design that converts. Wireframes, prototypes, and pixel-perfect design systems tailored to your brand.</p>
+        <div class="svc-tags"><span class="svc-tag">Figma</span><span class="svc-tag">Prototyping</span><span class="svc-tag">Design Systems</span></div>
+      </div>
+      <div class="svc-card" style="--svc-color:#AB47BC;">
+        <div class="svc-icon-wrap" style="background:#F3E8FD;color:#7B1FA2;"><i class="fa fa-brain"></i></div>
+        <h3>AI &amp; ML Integration</h3>
+        <p>Embed intelligent features into your product — from LLM-powered chatbots to custom machine learning models in production.</p>
+        <div class="svc-tags"><span class="svc-tag">OpenAI</span><span class="svc-tag">LangChain</span><span class="svc-tag">Python</span></div>
+      </div>
+      <div class="svc-card" style="--svc-color:#EF4444;">
+        <div class="svc-icon-wrap" style="background:#FEE2E2;color:#B91C1C;"><i class="fa fa-cloud"></i></div>
+        <h3>DevOps &amp; Cloud</h3>
+        <p>CI/CD pipelines, Kubernetes clusters, monitoring and alerting. We ensure your infrastructure is bulletproof and scalable.</p>
+        <div class="svc-tags"><span class="svc-tag">GitHub Actions</span><span class="svc-tag">K8s</span><span class="svc-tag">GCP/AWS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW WE WORK ── -->
+<section class="section how" id="process">
+  <div class="section-inner">
+    <div class="section-head center">
+      <div class="section-tag">Our Process</div>
+      <div class="section-title">How We Work</div>
+      <div class="section-sub">A clear, transparent process from your first message to launch day — and beyond.</div>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div style="position:relative;display:inline-block;">
+          <div class="step-circle"><i class="fa fa-comments" style="color:#4285F4;"></i></div>
+          <div class="step-num-badge">01</div>
+        </div>
+        <h4>Discovery Call</h4>
+        <p>We learn your goals, audience, and constraints. No sales pitch — just honest conversation.</p>
+      </div>
+      <div class="how-step">
+        <div style="position:relative;display:inline-block;">
+          <div class="step-circle"><i class="fa fa-pencil-ruler" style="color:#EA4335;"></i></div>
+          <div class="step-num-badge" style="background:#EA4335;">02</div>
+        </div>
+        <h4>Design &amp; Plan</h4>
+        <p>Wireframes and project roadmap reviewed and approved before any development begins.</p>
+      </div>
+      <div class="how-step">
+        <div style="position:relative;display:inline-block;">
+          <div class="step-circle"><i class="fa fa-code" style="color:#34A853;"></i></div>
+          <div class="step-num-badge" style="background:#34A853;">03</div>
+        </div>
+        <h4>Build &amp; Iterate</h4>
+        <p>Agile sprints with weekly demos. You see progress and give feedback at every stage.</p>
+      </div>
+      <div class="how-step">
+        <div style="position:relative;display:inline-block;">
+          <div class="step-circle"><i class="fa fa-rocket" style="color:#FBBC05;"></i></div>
+          <div class="step-num-badge" style="background:#E37400;">04</div>
+        </div>
+        <h4>Launch &amp; Support</h4>
+        <p>Zero-downtime deployment, thorough QA, and 60 days of free post-launch support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="section" id="work">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-tag">Portfolio</div>
+      <div class="section-title">Some of Our Work</div>
+      <div class="section-sub">Real products, real results. A selection of projects we're proud of.</div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-thumb pt1">
+          <div style="text-align:center;">
+            <div class="proj-thumb-text">FINOVA</div>
+            <div class="proj-thumb-sub">Investment Platform</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-industry">Fintech · SaaS</div>
+          <div class="proj-title">Finova — Real-Time Investment Dashboard</div>
+          <div class="proj-desc">Portfolio analytics platform with live market data, AI-driven insights, and custom reporting for 12,000+ retail investors.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Next.js</span><span class="tech-tag">WebSocket</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span>
+          </div>
+          <div class="proj-result"><i class="fa fa-arrow-trend-up"></i> 40% increase in user engagement post-launch</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb pt2">
+          <div style="text-align:center;">
+            <div class="proj-thumb-text">CARTIQ</div>
+            <div class="proj-thumb-sub">Smart Shopping App</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-industry">E-commerce · Mobile</div>
+          <div class="proj-title">CartIQ — AI-Powered Shopping Assistant</div>
+          <div class="proj-desc">Cross-platform mobile app with personalized ML recommendations. Reached 50,000+ downloads in the first 3 months.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">React Native</span><span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span>
+          </div>
+          <div class="proj-result"><i class="fa fa-arrow-trend-up"></i> 50k+ downloads, 4.8★ App Store rating</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb pt3">
+          <div style="text-align:center;">
+            <div class="proj-thumb-text">MEDHUB</div>
+            <div class="proj-thumb-sub">Healthcare Portal</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-industry">Healthcare · Web Platform</div>
+          <div class="proj-title">MedHub — HIPAA-Compliant Telehealth Portal</div>
+          <div class="proj-desc">Encrypted video consultations, EHR integration, and appointment scheduling connecting 300+ doctors with patients nationwide.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Vue.js</span><span class="tech-tag">WebRTC</span><span class="tech-tag">AWS</span><span class="tech-tag">HIPAA</span>
+          </div>
+          <div class="proj-result"><i class="fa fa-arrow-trend-up"></i> 300+ doctors onboarded in first month</div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb pt4">
+          <div style="text-align:center;">
+            <div class="proj-thumb-text">LOGIX</div>
+            <div class="proj-thumb-sub">Fleet Management</div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-industry">Logistics · Enterprise</div>
+          <div class="proj-title">LogiX — GPS Fleet Tracking &amp; Optimization</div>
+          <div class="proj-desc">Real-time tracking and route optimization for a 500-vehicle logistics fleet. Integrated with existing ERP systems seamlessly.</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Node.js</span><span class="tech-tag">Maps API</span><span class="tech-tag">Docker</span><span class="tech-tag">K8s</span>
+          </div>
+          <div class="proj-result"><i class="fa fa-arrow-trend-up"></i> 23% fuel cost reduction in first quarter</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <div class="btn-outline" style="display:inline-block;padding:13px 32px;font-size:14px;">View All Projects <i class="fa fa-arrow-right" style="margin-left:6px;font-size:12px;"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section testi-section">
+  <div class="section-inner">
+    <div class="section-head center">
+      <div class="section-tag">Client Love</div>
+      <div class="section-title">290+ Client Testimonials</div>
+      <div class="section-sub">98 out of 100 clients have given us a 5-star rating on Google and Clutch.</div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:20px;margin-bottom:36px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:10px 20px;font-size:13px;font-weight:600;">
+        <i class="fab fa-google" style="color:#4285F4;font-size:18px;"></i> Google — 4.9★
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:10px 20px;font-size:13px;font-weight:600;">
+        <i class="fab fa-product-hunt" style="color:#DA552F;font-size:18px;"></i> Clutch — 4.8★
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:10px 20px;font-size:13px;font-weight:600;">
+        <i class="fab fa-upwork" style="color:#6FDA44;font-size:18px;"></i> Upwork — Top Rated
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"They took our vague idea and delivered a polished, production-ready product in just 6 weeks. The quality blew us away. We've already started our second project with them."</div>
+        <div class="testi-author">
+          <div class="testi-av av1">AK</div>
+          <div><div class="testi-name">Arjun Kapoor</div><div class="testi-role">CEO, Finova</div></div>
+          <div class="testi-platform"><i class="fab fa-google"></i> Google</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"Extremely communicative team. Every single deadline was met, every feature worked exactly as promised. The best dev agency we've partnered with in 10 years."</div>
+        <div class="testi-author">
+          <div class="testi-av av2">SR</div>
+          <div><div class="testi-name">Sara Rahman</div><div class="testi-role">Product Lead, MedHub</div></div>
+          <div class="testi-platform"><i class="fab fa-product-hunt"></i> Clutch</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"The fleet system they built saved us hundreds of thousands in year one. ROI was clear within months of launch. Highly recommend BooterLabs to any enterprise looking for a reliable partner."</div>
+        <div class="testi-author">
+          <div class="testi-av av3">MT</div>
+          <div><div class="testi-name">Mohamed Tahir</div><div class="testi-role">Operations Director, LogiX</div></div>
+          <div class="testi-platform"><i class="fab fa-upwork"></i> Upwork</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"Their AI integration work was phenomenal. They turned a complex ML requirement into a seamless product feature our users love. Technical expertise is top-notch."</div>
+        <div class="testi-author">
+          <div class="testi-av av4">JL</div>
+          <div><div class="testi-name">Jessica Lin</div><div class="testi-role">CTO, CartIQ</div></div>
+          <div class="testi-platform"><i class="fab fa-google"></i> Google</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"Clean code, great communication, zero drama. They rebuilt our legacy system from the ground up without a single day of downtime. Absolutely stellar work."</div>
+        <div class="testi-author">
+          <div class="testi-av av5">PV</div>
+          <div><div class="testi-name">Priya Verma</div><div class="testi-role">VP Engineering, ScaleUp</div></div>
+          <div class="testi-platform"><i class="fab fa-product-hunt"></i> Clutch</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"The mobile app they delivered for us went from idea to App Store in just 10 weeks. It's fast, beautiful, and our customers keep complimenting the design."</div>
+        <div class="testi-author">
+          <div class="testi-av av6">RB</div>
+          <div><div class="testi-name">Ravi Bose</div><div class="testi-role">Founder, TravelPal</div></div>
+          <div class="testi-platform"><i class="fab fa-upwork"></i> Upwork</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECHNOLOGIES ── -->
+<section class="section tech-section">
+  <div class="section-inner">
+    <div class="section-head center">
+      <div class="section-tag">Tech Stack</div>
+      <div class="section-title">Technologies We Work With</div>
+      <div class="section-sub">We pick the right tool for the job — here's our core technology stack.</div>
+    </div>
+    <div class="tech-logos">
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-react" style="color:#61DAFB;"></i></div><div class="tech-logo-name">React</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon">⚡</div><div class="tech-logo-name">Next.js</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-node-js" style="color:#68A063;"></i></div><div class="tech-logo-name">Node.js</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-python" style="color:#3776AB;"></i></div><div class="tech-logo-name">Python</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-aws" style="color:#FF9900;"></i></div><div class="tech-logo-name">AWS</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-docker" style="color:#2496ED;"></i></div><div class="tech-logo-name">Docker</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-flutter" style="color:#54C5F8;"></i></div><div class="tech-logo-name">Flutter</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon">🐘</div><div class="tech-logo-name">PostgreSQL</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-vuejs" style="color:#42B883;"></i></div><div class="tech-logo-name">Vue.js</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon">🤖</div><div class="tech-logo-name">OpenAI</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon"><i class="fab fa-github" style="color:#24292E;"></i></div><div class="tech-logo-name">GitHub</div></div>
+      <div class="tech-logo"><div class="tech-logo-icon">☸️</div><div class="tech-logo-name">Kubernetes</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section faq-section">
+  <div class="section-inner">
+    <div class="section-head center">
+      <div class="section-tag">FAQ</div>
+      <div class="section-title">Frequently Asked Questions</div>
+      <div class="section-sub">Everything you need to know before working with us.</div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          How long does it take to build a website or web app?
+          <div class="icon"><i class="fa fa-plus"></i></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">It depends on the complexity. A standard marketing website takes 2–3 weeks. A full-stack web application typically takes 6–12 weeks. We provide a detailed timeline estimate during the free discovery call before any work begins.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          What is your pricing model?
+          <div class="icon"><i class="fa fa-plus"></i></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">We offer both fixed-price and time-and-materials engagements depending on your project's scope. Fixed-price is ideal when requirements are well-defined; hourly works better for evolving products. All pricing is transparent with no hidden fees.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          Do you provide post-launch support and maintenance?
+          <div class="icon"><i class="fa fa-plus"></i></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Yes — all projects include 60 days of free post-launch support. After that, we offer monthly retainer packages for ongoing maintenance, feature development, and infrastructure management.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          Will there be any additional charges after the website is launched?
+          <div class="icon"><i class="fa fa-plus"></i></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Not from us. Third-party costs like hosting, domain registration, and API subscriptions are your responsibility, and we'll guide you on the most cost-effective options. Our development fees are fully agreed upfront.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          Do you sign NDAs and provide source code ownership?
+          <div class="icon"><i class="fa fa-plus"></i></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. We sign NDAs before any project discussion begins. Upon final payment, you receive full source code ownership and all intellectual property rights. Nothing is locked in proprietary systems.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          Can you work with our existing team or codebase?
+          <div class="icon"><i class="fa fa-plus"></i></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Yes, we frequently augment existing engineering teams or take over legacy codebases. We begin with a thorough technical audit to understand the current state, then create a plan for seamless integration.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section class="cta-band" id="contact">
+  <div style="max-width:700px;margin:0 auto;">
+    <h2>Ready to Build Something Great?</h2>
+    <p>Tell us about your project — we'll respond within 24 hours with a free consultation and estimate.</p>
+    <div class="cta-band-btns">
+      <div class="btn-white">Start Your Project <i class="fa fa-arrow-right" style="margin-left:6px;font-size:12px;"></i></div>
+      <div class="btn-ghost"><i class="fa fa-calendar" style="margin-right:6px;"></i> Book a Free Call</div>
+    </div>
+    <div style="margin-top:28px;font-size:13px;color:rgba(255,255,255,.65);display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">
+      <span><i class="fa fa-check" style="margin-right:6px;color:#A5F3FC;"></i>No commitment required</span>
+      <span><i class="fa fa-check" style="margin-right:6px;color:#A5F3FC;"></i>Free project estimate</span>
+      <span><i class="fa fa-check" style="margin-right:6px;color:#A5F3FC;"></i>Response within 24 hours</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">booter<span>Labs</span></div>
+        <div class="footer-desc">We build premium software products that scale — web apps, mobile apps, APIs, and everything in between. Your vision, our craft.</div>
+        <div class="footer-socials">
+          <a class="social-btn" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="social-btn" href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a class="social-btn" href="#"><i class="fab fa-github"></i></a>
+          <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-btn" href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Mobile Apps</a></li>
+          <li><a href="#">Backend &amp; APIs</a></li>
+          <li><a href="#">UI/UX Design</a></li>
+          <li><a href="#">AI Integration</a></li>
+          <li><a href="#">DevOps &amp; Cloud</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#"><i class="fa fa-envelope" style="margin-right:6px;"></i>hello@devforge.io</a></li>
+          <li><a href="#"><i class="fa fa-phone" style="margin-right:6px;"></i>+91 98765 43210</a></li>
+          <li><a href="#"><i class="fa fa-map-marker-alt" style="margin-right:6px;"></i>Kolkata, India</a></li>
+          <li><a href="#"><i class="fa fa-clock" style="margin-right:6px;"></i>Mon–Fri, 9am–6pm IST</a></li>
+        </ul>
+        <div style="margin-top:16px;background:rgba(255,255,255,.06);border-radius:8px;padding:12px 14px;font-size:12px;color:#9AA0A6;border:1px solid rgba(255,255,255,.1);">
+          <div style="color:#fff;font-weight:700;margin-bottom:4px;"><i class="fa fa-circle" style="font-size:8px;color:#34A853;margin-right:6px;"></i>Currently accepting projects</div>
+          Estimated start: within 2 weeks
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 BooterLabs Solutions Pvt. Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="color:#475569;transition:color .2s;font-size:12px;">Privacy Policy</a>
+        <a href="#" style="color:#475569;transition:color .2s;font-size:12px;">Terms of Service</a>
+        <a href="#" style="color:#475569;transition:color .2s;font-size:12px;">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── CONFETTI CANVAS ── */
+(function(){
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  const COLORS = ['#4285F4','#EA4335','#FBBC05','#34A853','#AB47BC','#00ACC1','#4285F4','#EA4335'];
+  const COUNT = 180;
+
+  function resize(){
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function Particle(){
+    this.reset = function(init){
+      this.x = Math.random() * canvas.width;
+      this.y = init ? Math.random() * canvas.height : (Math.random() < 0.5 ? -12 : canvas.height + 12);
+      this.w = 2.5 + Math.random() * 2.5;
+      this.h = 6 + Math.random() * 7;
+      this.angle = Math.random() * Math.PI * 2;
+      this.spin = (Math.random() - 0.5) * 0.045;
+      this.vx = (Math.random() - 0.5) * 0.55;
+      this.vy = (Math.random() - 0.5) * 0.55;
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.alpha = 0.45 + Math.random() * 0.45;
+    };
+    this.reset(true);
+    this.update = function(){
+      this.x += this.vx;
+      this.y += this.vy;
+      this.angle += this.spin;
+      if(this.x < -20 || this.x > canvas.width+20 || this.y < -20 || this.y > canvas.height+20) this.reset(false);
+    };
+    this.draw = function(){
+      ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.fillStyle = this.color;
+      const r = this.w / 2;
+      const h2 = this.h / 2 - r;
+      ctx.beginPath();
+      ctx.arc(0, -h2, r, Math.PI, 0);
+      ctx.lineTo(r, h2);
+      ctx.arc(0, h2, r, 0, Math.PI);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    };
+  }
+
+  const particles = Array.from({length: COUNT}, () => new Particle());
+
+  function loop(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ── FAQ ── */
+function toggleFAQ(el){
+  const item=el.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+/* ── SCROLL FADE-IN ── */
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.1});
+
+document.querySelectorAll('.apart-card,.svc-card,.proj-card,.testi-card,.how-step,.tech-logo').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(20px)';
+  el.style.transition='opacity .5s ease, transform .5s ease';
+  observer.observe(el);
+});
+</script>
+
+<!-- ── WHATSAPP FLOAT BUTTON ── -->
+<a class="wa-btn" href="https://wa.me/919876543210" target="_blank" rel="noopener" title="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
+    <path fill="#fff" d="M4.9 43.3l2.7-9.7C5.9 31 5 28.1 5 25 5 13.9 13.9 5 25 5s20 8.9 20 20-8.9 20-20 20c-3 0-5.8-.7-8.3-1.9L4.9 43.3z"/>
+    <path fill="#25D366" d="M25 7c-9.9 0-18 8.1-18 18 0 3.1.8 6.1 2.3 8.7L7.4 42l8.6-1.9C18.5 41.3 21.7 42 25 42c9.9 0 18-8.1 18-18S34.9 7 25 7z"/>
+    <path fill="#fff" d="M32.7 28.3c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.6-.2.3-.5.3-.9.1-.4-.2-1.8-.7-3.4-2.1-1.3-1.1-2.1-2.5-2.4-2.9-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5-.1-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3 0 2 1.5 3.9 1.7 4.1.2.3 2.9 4.5 7.1 6.1.9.4 1.7.6 2.3.8.9.3 1.8.2 2.5.1.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.3-.2-.7-.4z"/>
+  </svg>
+  <span class="wa-label">Chat with us</span>
+</a>
+
+<style>
+.wa-btn{
+  position:fixed;
+  bottom:28px;
+  right:28px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  width:56px;
+  height:56px;
+  padding:0;
+  box-shadow:0 4px 20px rgba(37,211,102,.45);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  text-decoration:none;
+  transition:width .35s cubic-bezier(.34,1.56,.64,1),
+             border-radius .35s cubic-bezier(.34,1.56,.64,1),
+             gap .35s ease,
+             padding .35s ease,
+             box-shadow .3s ease,
+             transform .3s ease;
+  overflow:hidden;
+}
+.wa-btn:hover{
+  width:190px;
+  border-radius:100px;
+  gap:10px;
+  padding:0 20px 0 14px;
+  justify-content:flex-start;
+  box-shadow:0 6px 28px rgba(37,211,102,.55);
+  transform:translateY(-2px);
+}
+.wa-label{
+  white-space:nowrap;
+  opacity:0;
+  width:0;
+  transition:opacity .2s ease, width .3s ease;
+  overflow:hidden;
+}
+.wa-btn:hover .wa-label{opacity:1;width:auto;}
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45);}
+  50%{box-shadow:0 4px 28px rgba(37,211,102,.75),0 0 0 8px rgba(37,211,102,.12);}
+}
+.wa-btn{animation:wa-pulse 2.5s ease-in-out infinite;}
+.wa-btn:hover{animation:none;}
+</style>
+</body>
+</html>
