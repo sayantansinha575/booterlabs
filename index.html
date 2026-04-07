@@ -300,6 +300,32 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
   nav .nav-links{display:none;}
   .footer-top{grid-template-columns:1fr;}
 }
+
+/* ── BURGER BUTTON ── */
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;cursor:pointer;padding:8px;z-index:301;}
+.burger span{display:block;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:600px){.burger{display:flex;}}
+
+/* ── MOBILE DRAWER ── */
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:299;opacity:0;transition:opacity .3s;}
+.mob-overlay.open{display:block;opacity:1;}
+.mob-drawer{position:fixed;top:0;right:0;height:100%;width:300px;max-width:85vw;background:#fff;z-index:300;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,.15);}
+.mob-drawer.open{transform:translateX(0);}
+.mob-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--border);}
+.mob-drawer-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--text);}
+.mob-drawer-logo span{color:#4285F4;}
+.mob-close{width:36px;height:36px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--muted);}
+.mob-nav{flex:1;overflow-y:auto;padding:12px 12px;}
+.mob-nav a{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:10px;font-size:15px;font-weight:600;color:var(--text2);transition:background .15s;}
+.mob-nav a:hover,.mob-nav a:active{background:var(--bg3);color:var(--text);}
+.mob-nav a i.mob-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.mob-section-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:16px 14px 6px;}
+.mob-divider{height:1px;background:var(--border);margin:8px 0;}
+.mob-drawer-foot{padding:16px 20px;border-top:1px solid var(--border);}
+.mob-cta{display:block;text-align:center;background:#202124;color:#fff;padding:13px;border-radius:12px;font-size:14px;font-weight:700;}
 </style>
 </head>
 <body>
@@ -380,8 +406,67 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
       <!-- <div class="btn-outline">View Portfolio</div>
       <div class="btn-filled">Get Free Quote</div> -->
     </div>
+    <div class="burger" id="burger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
+
+<!-- ── MOBILE DRAWER ── -->
+<div class="mob-overlay" id="mobOverlay" onclick="toggleDrawer()"></div>
+<div class="mob-drawer" id="mobDrawer">
+  <div class="mob-drawer-head">
+    <div class="mob-drawer-logo">booter<span>Labs</span></div>
+    <div class="mob-close" onclick="toggleDrawer()"><i class="fa fa-times"></i></div>
+  </div>
+  <nav class="mob-nav">
+    <div class="mob-section-label">Navigation</div>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-th-large" style="background:#E8F0FE;color:#1A73E8;"></i>Services
+    </a>
+    <a href="#work" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-briefcase" style="background:#E6F4EA;color:#137333;"></i>Our Work
+    </a>
+    <a href="#process" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-sitemap" style="background:#FEF7E0;color:#E37400;"></i>Process
+    </a>
+    <a href="#about" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-users" style="background:#F3E8FD;color:#7B1FA2;"></i>About
+    </a>
+    <a href="#contact" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-envelope" style="background:#FCE8E6;color:#C5221F;"></i>Contact
+    </a>
+    <div class="mob-divider"></div>
+    <div class="mob-section-label">Services</div>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-globe" style="background:#E8F0FE;color:#1A73E8;"></i>Web Development
+    </a>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-mobile-alt" style="background:#FCE8E6;color:#C5221F;"></i>Mobile Apps
+    </a>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-server" style="background:#E6F4EA;color:#137333;"></i>Backend &amp; APIs
+    </a>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-paint-brush" style="background:#FEF7E0;color:#E37400;"></i>UI/UX Design
+    </a>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-brain" style="background:#F3E8FD;color:#7B1FA2;"></i>AI &amp; ML Integration
+    </a>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-cloud" style="background:#FEE2E2;color:#B91C1C;"></i>DevOps &amp; Cloud
+    </a>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-search" style="background:#E8F5E9;color:#2E7D32;"></i>SEO &amp; Growth
+    </a>
+    <a href="#services" onclick="toggleDrawer()">
+      <i class="mob-icon fa fa-cubes" style="background:#E3F2FD;color:#1565C0;"></i>SaaS Development
+    </a>
+  </nav>
+  <div class="mob-drawer-foot">
+    <a class="mob-cta" href="#contact" onclick="toggleDrawer()">Start Your Project →</a>
+  </div>
+</div>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -831,7 +916,7 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
     <h2>Ready to Build Something Great?</h2>
     <p>Tell us about your project — we'll respond within 24 hours with a free consultation and estimate.</p>
     <div class="cta-band-btns">
-      <div class="btn-white">Start Your Project <i class="fa fa-arrow-right" style="margin-left:6px;font-size:12px;"></i></div>
+      <a class="btn-white" href="mailto:sayantansinha575@gmail.com?subject=Project%20Inquiry%20—%20BooterLabs&body=Hi%20BooterLabs%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you.%0A%0AProject%20details%3A%0A">Start Your Project <i class="fa fa-arrow-right" style="margin-left:6px;font-size:12px;"></i></a>
       <div class="btn-ghost"><i class="fa fa-calendar" style="margin-right:6px;"></i> Book a Free Call</div>
     </div>
     <div style="margin-top:28px;font-size:13px;color:rgba(255,255,255,.65);display:flex;gap:24px;justify-content:center;flex-wrap:wrap;">
@@ -882,8 +967,8 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="#"><i class="fa fa-envelope" style="margin-right:6px;"></i>hello@devforge.io</a></li>
-          <li><a href="#"><i class="fa fa-phone" style="margin-right:6px;"></i>+91 98765 43210</a></li>
+          <li><a target="_blank" href="https://booterweb1.page.gd/"><i class="fa fa-envelope" style="margin-right:6px;"></i>support@booterlabs.com</a></li>
+          <li><a href="#"><i class="fa fa-phone" style="margin-right:6px;"></i>+91 7001027579</a></li>
           <li><a href="#"><i class="fa fa-map-marker-alt" style="margin-right:6px;"></i>Kolkata, India</a></li>
           <li><a href="#"><i class="fa fa-clock" style="margin-right:6px;"></i>Mon–Fri, 9am–6pm IST</a></li>
         </ul>
@@ -967,6 +1052,18 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
   loop();
 })();
 
+/* ── MOBILE DRAWER ── */
+function toggleDrawer(){
+  const drawer=document.getElementById('mobDrawer');
+  const overlay=document.getElementById('mobOverlay');
+  const burger=document.getElementById('burger');
+  const open=drawer.classList.toggle('open');
+  overlay.classList.toggle('open',open);
+  burger.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('mobDrawer').classList.contains('open')&&toggleDrawer();});
+
 /* ── FAQ ── */
 function toggleFAQ(el){
   const item=el.parentElement;
@@ -994,7 +1091,7 @@ document.querySelectorAll('.apart-card,.svc-card,.proj-card,.testi-card,.how-ste
 </script>
 
 <!-- ── WHATSAPP FLOAT BUTTON ── -->
-<a class="wa-btn" href="https://wa.me/919876543210" target="_blank" rel="noopener" title="Chat on WhatsApp">
+<a class="wa-btn" href="https://wa.me/917001027579" target="_blank" rel="noopener" title="Chat on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
     <path fill="#fff" d="M4.9 43.3l2.7-9.7C5.9 31 5 28.1 5 25 5 13.9 13.9 5 25 5s20 8.9 20 20-8.9 20-20 20c-3 0-5.8-.7-8.3-1.9L4.9 43.3z"/>
     <path fill="#25D366" d="M25 7c-9.9 0-18 8.1-18 18 0 3.1.8 6.1 2.3 8.7L7.4 42l8.6-1.9C18.5 41.3 21.7 42 25 42c9.9 0 18-8.1 18-18S34.9 7 25 7z"/>
