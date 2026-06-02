@@ -967,7 +967,7 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a target="_blank" href="https://booterweb1.page.gd/"><i class="fa fa-envelope" style="margin-right:6px;"></i>support@booterlabs.com</a></li>
+          <li><a  href="javascript:void(0)"><i class="fa fa-envelope" style="margin-right:6px;"></i>booterlabs@gmail.com</a></li>
           <li><a href="#"><i class="fa fa-phone" style="margin-right:6px;"></i>+91 7001027579</a></li>
           <li><a href="#"><i class="fa fa-map-marker-alt" style="margin-right:6px;"></i>Kolkata, India</a></li>
           <li><a href="#"><i class="fa fa-clock" style="margin-right:6px;"></i>Mon–Fri, 9am–6pm IST</a></li>
@@ -1090,68 +1090,128 @@ document.querySelectorAll('.apart-card,.svc-card,.proj-card,.testi-card,.how-ste
 });
 </script>
 
-<!-- ── WHATSAPP FLOAT BUTTON ── -->
-<a class="wa-btn" href="https://wa.me/917001027579" target="_blank" rel="noopener" title="Chat on WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
-    <path fill="#fff" d="M4.9 43.3l2.7-9.7C5.9 31 5 28.1 5 25 5 13.9 13.9 5 25 5s20 8.9 20 20-8.9 20-20 20c-3 0-5.8-.7-8.3-1.9L4.9 43.3z"/>
-    <path fill="#25D366" d="M25 7c-9.9 0-18 8.1-18 18 0 3.1.8 6.1 2.3 8.7L7.4 42l8.6-1.9C18.5 41.3 21.7 42 25 42c9.9 0 18-8.1 18-18S34.9 7 25 7z"/>
-    <path fill="#fff" d="M32.7 28.3c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.6-.2.3-.5.3-.9.1-.4-.2-1.8-.7-3.4-2.1-1.3-1.1-2.1-2.5-2.4-2.9-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5-.1-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3 0 2 1.5 3.9 1.7 4.1.2.3 2.9 4.5 7.1 6.1.9.4 1.7.6 2.3.8.9.3 1.8.2 2.5.1.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.3-.2-.7-.4z"/>
-  </svg>
-  <span class="wa-label">Chat with us</span>
-</a>
+<!-- ── FLOATING CONTACT BUTTONS ── -->
+<div class="float-btns">
+
+  <!-- WhatsApp -->
+  <a class="float-btn wa-btn" href="https://wa.me/917001027579" target="_blank" rel="noopener" title="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
+      <path fill="#fff" d="M4.9 43.3l2.7-9.7C5.9 31 5 28.1 5 25 5 13.9 13.9 5 25 5s20 8.9 20 20-8.9 20-20 20c-3 0-5.8-.7-8.3-1.9L4.9 43.3z"/>
+      <path fill="#25D366" d="M25 7c-9.9 0-18 8.1-18 18 0 3.1.8 6.1 2.3 8.7L7.4 42l8.6-1.9C18.5 41.3 21.7 42 25 42c9.9 0 18-8.1 18-18S34.9 7 25 7z"/>
+      <path fill="#fff" d="M32.7 28.3c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.6-.2.3-.5.3-.9.1-.4-.2-1.8-.7-3.4-2.1-1.3-1.1-2.1-2.5-2.4-2.9-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.7.1-.3 0-.5-.1-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3 0 2 1.5 3.9 1.7 4.1.2.3 2.9 4.5 7.1 6.1.9.4 1.7.6 2.3.8.9.3 1.8.2 2.5.1.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.3-.2-.7-.4z"/>
+    </svg>
+    <span class="float-label">Chat with us</span>
+  </a>
+
+  <!-- Phone -->
+  <a class="float-btn phone-btn" href="tel:+917001027579" title="Call us">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <span class="float-label">Call us</span>
+  </a>
+
+  <!-- Gmail -->
+  <a class="float-btn gmail-btn" href="mailto:booterlabs@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20BooterLabs&body=Hi%20BooterLabs%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you." title="Email us">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28">
+      <path fill="#fff" d="M6 40h6V22.5L4 17v21a2 2 0 0 0 2 2z"/>
+      <path fill="#fff" d="M36 40h6a2 2 0 0 0 2-2V17l-8 5.5z"/>
+      <path fill="#fff" d="M36 10h-2L24 17 14 10h-2L4 15.5 24 28l20-12.5z"/>
+      <path fill="#EA4335" d="M6 40h6V22.5L4 17v21a2 2 0 0 0 2 2z" opacity=".3"/>
+      <path fill="#fff" d="M4 17l8 5.5V40H6a2 2 0 0 1-2-2V17z" fill="#C5221F"/>
+      <path fill="#FBBC04" d="M36 22.5V40h6a2 2 0 0 0 2-2V17z" fill="#FBBC04"/>
+      <path fill="#34A853" d="M36 10h-2L24 17 14 10h-2L4 15.5 24 28l20-12.5L36 10z" fill="#34A853" opacity="0"/>
+      <rect width="48" height="48" fill="none"/>
+      <path fill="#EA4335" d="M4 15.46V17l8 5.5V10h-.4z"/>
+      <path fill="#FBBC04" d="M44 15.46L36.4 10H36v12.5L44 17z"/>
+      <path fill="#34A853" d="M36 10h-2L24 17 14 10h-2v12.5L24 28l20-12.5z" fill="#34A853"/>
+      <path fill="#4285F4" d="M4 17v21a2 2 0 0 0 2 2h6V22.5z"/>
+      <path fill="#1967D2" d="M36 22.5V40h6a2 2 0 0 0 2-2V17z"/>
+    </svg>
+    <span class="float-label">Email us</span>
+  </a>
+
+</div>
 
 <style>
-.wa-btn{
+.float-btns{
   position:fixed;
   bottom:28px;
   right:28px;
   z-index:9999;
   display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:12px;
+}
+.float-btn{
+  display:flex;
   align-items:center;
   justify-content:center;
   gap:0;
-  background:#25D366;
-  color:#fff;
   border-radius:50%;
   width:56px;
   height:56px;
   padding:0;
-  box-shadow:0 4px 20px rgba(37,211,102,.45);
+  color:#fff;
+  text-decoration:none;
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:14px;
   font-weight:700;
-  text-decoration:none;
+  overflow:hidden;
   transition:width .35s cubic-bezier(.34,1.56,.64,1),
              border-radius .35s cubic-bezier(.34,1.56,.64,1),
              gap .35s ease,
              padding .35s ease,
              box-shadow .3s ease,
              transform .3s ease;
-  overflow:hidden;
 }
-.wa-btn:hover{
-  width:190px;
+.float-btn:hover{
+  width:170px;
   border-radius:100px;
   gap:10px;
   padding:0 20px 0 14px;
   justify-content:flex-start;
-  box-shadow:0 6px 28px rgba(37,211,102,.55);
   transform:translateY(-2px);
 }
-.wa-label{
+.float-label{
   white-space:nowrap;
   opacity:0;
   width:0;
   transition:opacity .2s ease, width .3s ease;
   overflow:hidden;
 }
-.wa-btn:hover .wa-label{opacity:1;width:auto;}
+.float-btn:hover .float-label{opacity:1;width:auto;}
+
+/* WhatsApp */
+.wa-btn{background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,.45);}
+.wa-btn:hover{box-shadow:0 6px 28px rgba(37,211,102,.55);}
 @keyframes wa-pulse{
   0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45);}
   50%{box-shadow:0 4px 28px rgba(37,211,102,.75),0 0 0 8px rgba(37,211,102,.12);}
 }
 .wa-btn{animation:wa-pulse 2.5s ease-in-out infinite;}
 .wa-btn:hover{animation:none;}
+
+/* Phone */
+.phone-btn{background:#1a73e8;box-shadow:0 4px 20px rgba(26,115,232,.45);}
+.phone-btn:hover{box-shadow:0 6px 28px rgba(26,115,232,.55);}
+@keyframes phone-pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(26,115,232,.45);}
+  50%{box-shadow:0 4px 28px rgba(26,115,232,.75),0 0 0 8px rgba(26,115,232,.12);}
+}
+.phone-btn{animation:phone-pulse 2.5s ease-in-out infinite .4s;}
+.phone-btn:hover{animation:none;}
+
+/* Gmail */
+.gmail-btn{background:#EA4335;box-shadow:0 4px 20px rgba(234,67,53,.45);}
+.gmail-btn:hover{box-shadow:0 6px 28px rgba(234,67,53,.55);}
+@keyframes gmail-pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(234,67,53,.45);}
+  50%{box-shadow:0 4px 28px rgba(234,67,53,.75),0 0 0 8px rgba(234,67,53,.12);}
+}
+.gmail-btn{animation:gmail-pulse 2.5s ease-in-out infinite .8s;}
+.gmail-btn:hover{animation:none;}
 </style>
 
 <!-- ── SCHEMA MARKUP ── -->
