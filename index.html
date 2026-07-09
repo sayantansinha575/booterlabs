@@ -16,7 +16,14 @@
 
 <!-- Event snippet for Contact conversion page -->
 <script>
+if(new URLSearchParams(window.location.search).get('owner')==='1'){
+  localStorage.setItem('bl_owner','1');
+}
 function gtag_report_conversion(url) {
+  if(localStorage.getItem('bl_owner')==='1') {
+    if(typeof url !== 'undefined') window.location = url;
+    return false;
+  }
   var callback = function () {
     if (typeof(url) != 'undefined') {
       window.location = url;
@@ -937,7 +944,7 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
 </section>
 
 <!-- ── CTA BAND ── -->
-<section class="cta-band" id="contact">
+<section class="cta-band">
   <div style="max-width:700px;margin:0 auto;">
     <h2>Ready to Build Something Great?</h2>
     <p>Tell us about your project — we'll respond within 24 hours with a free consultation and estimate.</p>
@@ -990,7 +997,7 @@ footer{background:#202124;color:#9AA0A6;padding:60px 5% 30px;position:relative;z
           <li><a href="#">Press</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="footer-col" id="contact">
         <h5>Contact</h5>
         <ul>
           <li><a  href="javascript:void(0)"><i class="fa fa-envelope" style="margin-right:6px;"></i>booterlabs@gmail.com</a></li>
@@ -1138,22 +1145,8 @@ document.querySelectorAll('.apart-card,.svc-card,.proj-card,.testi-card,.how-ste
   </a>
 
   <!-- Gmail -->
-  <a class="float-btn gmail-btn" href="mailto:booterlabs@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20BooterLabs&body=Hi%20BooterLabs%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you." title="Email us" onclick="gtag_report_conversion('mailto:booterlabs@gmail.com');">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28" height="28">
-      <path fill="#fff" d="M6 40h6V22.5L4 17v21a2 2 0 0 0 2 2z"/>
-      <path fill="#fff" d="M36 40h6a2 2 0 0 0 2-2V17l-8 5.5z"/>
-      <path fill="#fff" d="M36 10h-2L24 17 14 10h-2L4 15.5 24 28l20-12.5z"/>
-      <path fill="#EA4335" d="M6 40h6V22.5L4 17v21a2 2 0 0 0 2 2z" opacity=".3"/>
-      <path fill="#fff" d="M4 17l8 5.5V40H6a2 2 0 0 1-2-2V17z" fill="#C5221F"/>
-      <path fill="#FBBC04" d="M36 22.5V40h6a2 2 0 0 0 2-2V17z" fill="#FBBC04"/>
-      <path fill="#34A853" d="M36 10h-2L24 17 14 10h-2L4 15.5 24 28l20-12.5L36 10z" fill="#34A853" opacity="0"/>
-      <rect width="48" height="48" fill="none"/>
-      <path fill="#EA4335" d="M4 15.46V17l8 5.5V10h-.4z"/>
-      <path fill="#FBBC04" d="M44 15.46L36.4 10H36v12.5L44 17z"/>
-      <path fill="#34A853" d="M36 10h-2L24 17 14 10h-2v12.5L24 28l20-12.5z" fill="#34A853"/>
-      <path fill="#4285F4" d="M4 17v21a2 2 0 0 0 2 2h6V22.5z"/>
-      <path fill="#1967D2" d="M36 22.5V40h6a2 2 0 0 0 2-2V17z"/>
-    </svg>
+  <a class="float-btn gmail-btn" style="color:#000000" href="mailto:booterlabs@gmail.com?subject=Project%20Inquiry%20%E2%80%94%20BooterLabs&body=Hi%20BooterLabs%2C%0A%0AI%27d%20like%20to%20discuss%20a%20project%20with%20you." title="Email us" onclick="gtag_report_conversion('mailto:booterlabs@gmail.com');">
+    <img src="assets/logo.png" width="30" height="30" style="object-fit:contain;" alt="BooterLabs"/>
     <span class="float-label">Email us</span>
   </a>
 
@@ -1230,11 +1223,11 @@ document.querySelectorAll('.apart-card,.svc-card,.proj-card,.testi-card,.how-ste
 .phone-btn:hover{animation:none;}
 
 /* Gmail */
-.gmail-btn{background:#EA4335;box-shadow:0 4px 20px rgba(234,67,53,.45);}
-.gmail-btn:hover{box-shadow:0 6px 28px rgba(234,67,53,.55);}
+.gmail-btn{background:#ffffff;box-shadow:0 4px 20px rgba(0,0,0,.15);}
+.gmail-btn:hover{box-shadow:0 6px 28px rgba(0,0,0,.25);}
 @keyframes gmail-pulse{
-  0%,100%{box-shadow:0 4px 20px rgba(234,67,53,.45);}
-  50%{box-shadow:0 4px 28px rgba(234,67,53,.75),0 0 0 8px rgba(234,67,53,.12);}
+  0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.15);}
+  50%{box-shadow:0 4px 28px rgba(0,0,0,.25),0 0 0 8px rgba(0,0,0,.06);}
 }
 .gmail-btn{animation:gmail-pulse 2.5s ease-in-out infinite .8s;}
 .gmail-btn:hover{animation:none;}
