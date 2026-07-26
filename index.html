@@ -204,7 +204,30 @@ function gtag_report_conversion(url) {
     <div class="flex items-center space-x-5 text-gray-700" data-name="utility icon container">
       <button type="button" aria-label="Search" class="hover:text-[var(--ibm-blue)] cursor-pointer"><i class="w-4 h-4" data-lucide="search" aria-hidden="true"></i></button>
       <button type="button" aria-label="Chat" class="hover:text-[var(--ibm-blue)] cursor-pointer"><i class="w-4 h-4" data-lucide="message-square" aria-hidden="true"></i></button>
-      <button type="button" aria-label="Language selector" class="hover:text-[var(--ibm-blue)] cursor-pointer"><i class="w-4 h-4" data-lucide="globe" aria-hidden="true"></i></button>
+      <div class="relative" id="lang-selector-wrap">
+        <button type="button" aria-label="Language selector" id="lang-btn" onclick="toggleLangMenu()" class="hover:text-[var(--ibm-blue)] cursor-pointer flex items-center gap-1"><i class="w-4 h-4" data-lucide="globe" aria-hidden="true"></i><span id="lang-code" style="font-size:0.65rem;font-weight:600;letter-spacing:.05em">EN</span></button>
+        <div id="lang-menu" style="display:none;position:absolute;top:calc(100% + 10px);right:0;width:320px;background:#fff;border:1px solid #e0e0e0;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:999;max-height:420px;overflow-y:auto">
+          <div style="background:#262626;padding:16px 20px">
+            <div style="font-size:0.75rem;color:#c6c6c6;margin-bottom:4px">Your current region is:</div>
+            <div id="lang-current" style="font-size:0.9375rem;font-weight:600;color:#fff">India &ndash; English</div>
+          </div>
+          <div style="padding:12px 20px;font-size:0.75rem;color:#525252;border-bottom:1px solid #e0e0e0">Select a different region:</div>
+          <ul style="margin:0;padding:0;list-style:none">
+            <li><a href="#" onclick="setLang('Australia – English','Australia – English (English)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">Australia &ndash; English <span style="color:#525252">(English)</span></a></li>
+            <li><a href="#" onclick="setLang('Brazil – Português','Brazil – Português (Portuguese)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">Brazil &ndash; Portugu&ecirc;s <span style="color:#525252">(Portuguese)</span></a></li>
+            <li><a href="#" onclick="setLang('Canada – English','Canada – English (English)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">Canada &ndash; English <span style="color:#525252">(English)</span></a></li>
+            <li><a href="#" onclick="setLang('Canada – Français','Canada – Français (French)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">Canada &ndash; Fran&ccedil;ais <span style="color:#525252">(French)</span></a></li>
+            <li><a href="#" onclick="setLang('China – 中文','China – 中文 (Simplified Chinese)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">China &ndash; &#20013;&#25991; <span style="color:#525252">(Simplified Chinese)</span></a></li>
+            <li><a href="#" onclick="setLang('France – Français','France – Français (French)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">France &ndash; Fran&ccedil;ais <span style="color:#525252">(French)</span></a></li>
+            <li><a href="#" onclick="setLang('Germany – Deutsch','Germany – Deutsch (German)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">Germany &ndash; Deutsch <span style="color:#525252">(German)</span></a></li>
+            <li><a href="#" onclick="setLang('India – English','India – English');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#0f62fe;font-weight:600;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">India &ndash; English</a></li>
+            <li><a href="#" onclick="setLang('Indonesia – Bahasa','Indonesia – Bahasa (Indonesian)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">Indonesia &ndash; Bahasa <span style="color:#525252">(Indonesian)</span></a></li>
+            <li><a href="#" onclick="setLang('Japan – 日本語','Japan – 日本語 (Japanese)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">Japan &ndash; &#26085;&#26412;&#35486; <span style="color:#525252">(Japanese)</span></a></li>
+            <li><a href="#" onclick="setLang('United Kingdom – English','United Kingdom – English (English)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none;border-bottom:1px solid #f4f4f4" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">United Kingdom &ndash; English <span style="color:#525252">(English)</span></a></li>
+            <li><a href="#" onclick="setLang('United States – English','United States – English (English)');return false" style="display:block;padding:12px 20px;font-size:0.875rem;color:#161616;text-decoration:none" onmouseover="this.style.background='#f4f4f4'" onmouseout="this.style.background=''">United States &ndash; English <span style="color:#525252">(English)</span></a></li>
+          </ul>
+        </div>
+      </div>
       <button type="button" aria-label="Profile" class="hover:text-[var(--ibm-blue)] cursor-pointer"><i class="w-4 h-4" data-lucide="user" aria-hidden="true"></i></button>
     </div>
   </header>
@@ -698,6 +721,50 @@ function gtag_report_conversion(url) {
       _carouselTimer = setInterval(function() { carouselGoTo(_carouselIdx + 1); }, 3800);
     }
   }
+
+  // ── Language selector ──
+  function toggleLangMenu() {
+    var menu = document.getElementById('lang-menu');
+    var isOpen = menu.style.display !== 'none';
+    menu.style.display = isOpen ? 'none' : 'block';
+  }
+
+  var _langCodes = {
+    'Australia – English': 'EN', 'Brazil – Português': 'PT', 'Canada – English': 'EN',
+    'Canada – Français': 'FR', 'China – 中文': 'ZH', 'France – Français': 'FR',
+    'Germany – Deutsch': 'DE', 'India – English': 'EN', 'Indonesia – Bahasa': 'ID',
+    'Japan – 日本語': 'JA', 'United Kingdom – English': 'EN', 'United States – English': 'EN'
+  };
+
+  function setLang(short, full) {
+    var current = document.getElementById('lang-current');
+    var badge = document.getElementById('lang-code');
+    if (current) current.textContent = short;
+    if (badge) badge.textContent = _langCodes[short] || 'EN';
+
+    // highlight active row
+    document.querySelectorAll('#lang-menu li a').forEach(function(a) {
+      var isActive = a.getAttribute('onclick').indexOf("'" + short + "'") !== -1;
+      a.style.color = isActive ? '#0f62fe' : '#161616';
+      a.style.fontWeight = isActive ? '600' : '400';
+    });
+
+    document.getElementById('lang-menu').style.display = 'none';
+
+    // toast
+    var toast = document.createElement('div');
+    toast.textContent = 'Region changed to ' + short;
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#161616;color:#fff;padding:10px 20px;font-size:0.75rem;z-index:9999;opacity:1;transition:opacity .4s';
+    document.body.appendChild(toast);
+    setTimeout(function() { toast.style.opacity = '0'; setTimeout(function() { toast.remove(); }, 400); }, 2200);
+  }
+
+  document.addEventListener('click', function(e) {
+    var wrap = document.getElementById('lang-selector-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('lang-menu').style.display = 'none';
+    }
+  });
 
   function carouselTogglePause() {
     _carouselPaused = !_carouselPaused;
