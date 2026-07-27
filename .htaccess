@@ -1,0 +1,14 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Remove ?i=1 added by InfinityFree anti-bot system
+RewriteCond %{QUERY_STRING} ^i=1$
+RewriteRule ^(.*)$ https://booterlabs.in/$1? [R=301,L]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Slug URLs
+RewriteRule ^me/?$ me.html [L]
